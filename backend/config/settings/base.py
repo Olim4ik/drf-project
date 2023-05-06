@@ -19,8 +19,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# AUTH_USER_MODEL = "users.User"
-
+# Changing Default User model to out Custom One
+AUTH_USER_MODEL = "users.User"
 
 # Application definition
 
@@ -45,7 +45,8 @@ THIRD_PARTY = [
 ]
 
 LOCAL_APPS = [
-
+    'users',
+    'posts',
 ]
     
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY + LOCAL_APPS
