@@ -1,10 +1,11 @@
-from core.models import BaseModel
+from core.models import BaseModel, BaseImage
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 class Post(BaseModel):
     title = models.CharField(max_length=255, blank=True)
-    body = models.TextField()
+    body = RichTextField()  # TextField()
 
     class Meta:
         verbose_name = 'Post'
@@ -13,3 +14,6 @@ class Post(BaseModel):
     def __str__(self) -> str:
         return str(self.title)
     
+
+class PostImage(BaseImage):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True)

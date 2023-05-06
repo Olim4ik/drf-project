@@ -1,3 +1,4 @@
+from datetime import timedelta
 import os
 import sys
 from pathlib import Path
@@ -42,6 +43,7 @@ THIRD_PARTY = [
     'versatileimagefield',
     'constance',
     'constance.backends.database',
+    'ckeditor',
 ]
 
 LOCAL_APPS = [
@@ -130,8 +132,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
+STATIC_ROOT = os.path.join(STATIC_DIR, 'static/')
+MEDIA_ROOT = os.path.join(STATIC_DIR, 'media/')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -149,3 +158,20 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
 }
+
+CONSTANCE_ADDITIONAL_FIELDS = {
+    'language_select': ['django.forms.fields.ChoiceField', {
+        'widget': 'django.forms.Select',
+        'choices': (("EN", "English"), ("RU", "Russian")),
+    }],
+}
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_CONFIG = {
+    'LANGUAGE': ('EN', 'Select language', 'language_select'),
+}
+
+
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(days=14),
+#     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+# }
