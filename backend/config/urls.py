@@ -1,3 +1,4 @@
+from apps.files.views import FileViewSet
 from apps.posts.views import PostViewSet
 from apps.videos.views import VideoViewSet
 from django.conf import settings
@@ -12,6 +13,7 @@ schema_view = get_swagger_view(title='Demo API')
 router = DefaultRouter()
 router.register(r'posts', PostViewSet, basename='posts')
 router.register(r'videos', VideoViewSet, basename='videos')
+router.register(r'files', FileViewSet, basename='files')
 
 
 urlpatterns = [
