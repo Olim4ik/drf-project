@@ -1,7 +1,11 @@
-from datetime import timedelta
 import os
 import sys
+from datetime import timedelta
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -13,7 +17,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, "apps"))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-k!sgmrgm^lpei5g4x&&iwbvimkebedzk_ui8)uku#i#lpqq#$x'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-k!sgmrgm^lpei5g4x&&iwbvimkebedzk_ui8)uku#i#lpqq#$x')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -49,6 +53,7 @@ THIRD_PARTY = [
 LOCAL_APPS = [
     'users',
     'posts',
+    'videos',
 ]
     
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY + LOCAL_APPS
@@ -165,13 +170,15 @@ CONSTANCE_ADDITIONAL_FIELDS = {
         'choices': (("EN", "English"), ("RU", "Russian")),
     }],
 }
+
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+
 CONSTANCE_CONFIG = {
     'LANGUAGE': ('EN', 'Select language', 'language_select'),
 }
 
 
-# SIMPLE_JWT = {
-#     'ACCESS_TOKEN_LIFETIME': timedelta(days=14),
-#     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
-# }
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=14),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+}
