@@ -1,6 +1,7 @@
 from apps.files.views import FileViewSet
 from apps.posts.views import PostViewSet
 from apps.videos.views import VideoViewSet
+from apps.website.views import HomeView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -17,6 +18,7 @@ router.register(r'files', FileViewSet, basename='files')
 
 
 urlpatterns = [
+    path('', HomeView.as_view()),
     path('admin/', admin.site.urls),
     path('swagger/', schema_view),
     # path('videos/', include('apps.videos.urls'))

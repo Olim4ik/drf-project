@@ -1,0 +1,43 @@
+{% extends "website/base.html" %} {% load static %} {% block content %}
+
+<section id="home" class="d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-between">
+            <div class="col-xl-8 col-lg-10 col-12 stagger-animation">
+                <div class="about d-flex align-items-center">
+                    <img
+                        class="anim-item profile-picture align-self-start"
+                        src="{% static 'website/olimjon.jpg' %}"
+                        alt="Olimjon"
+                        style="transform: matrix(1, 0, 0, 1, 0, 0); opacity: 1"
+                    />
+                    <div class="about-detail anim-item" style="transform: matrix(1, 0, 0, 1, 0, 0); opacity: 1">
+                        <h1 class="title">Olimjon Akhmadjonov</h1>
+                        <h3 class="desc">Software Engineer</h3>
+                        <div class="social-links flex align-items-center"></div>
+                    </div>
+                </div>
+
+                <div class="detail">
+                    <p class="size-big anim-item" style="transform: matrix(1, 0, 0, 1, 0, 0); opacity: 1">
+                        I write about books and some coding stuff.
+                    </p>
+                    <div class="btns-wrapper anim-item" style="transform: matrix(1, 0, 0, 1, 0, 0); opacity: 1">
+                        <a href="#blog/" class="btn btn-primary">Read Blog</a>
+                        <a href="#about/" class="btn btn-outline-primary">About Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <p>© 2022 olimjohn.com</p>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}
